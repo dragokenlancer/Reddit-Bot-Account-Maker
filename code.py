@@ -58,7 +58,7 @@ def createAccount(username, password):
 
 		print('Retreiving email...')
 		emailDriver.get('https://getnada.com')
-		email = emailDriver.find_element_by_xpath('/html/body/div/div[2]/div[2]/div[1]/div[2]/div/div[1]/h1/span[2]').text
+		email = emailDriver.find_element_by_xpath('/html/body/div/div/div/div/div[2]/nav/div/div/ul[2]/li/span').text
 
 		print('Entering email...')
 		driver.find_element_by_id('email_reg').send_keys(email)
@@ -105,11 +105,11 @@ def createAccount(username, password):
 		time.sleep(15)
 		emailDriver.get('https://getnada.com')
 		time.sleep(15)
-		emailDriver.find_element_by_xpath('/html/body/div/div[2]/div[2]/div[1]/div[2]/div/div[2]/div/div[1]/ul/li').click()
+		emailDriver.find_element_by_xpath('//*[@id="__layout"]/div/div/div[2]/div/div[1]/div/div/div[1]/div[2]/table/tbody/tr/td[2]').click()
 		time.sleep(15)
-		frame = emailDriver.find_element_by_id('idIframe')
+		frame = emailDriver.find_element_by_xpath('//*[@id="the_message_iframe"]')
 		emailDriver.switch_to.frame(frame)
-		emailText = emailDriver.find_element_by_xpath('/html/body').text
+		emailText = emailDriver.find_element_by_xpath('/html/body/center/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr[1]/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr[3]/td/table/tbody/tr/td/a').get_attribute('href')
 		link = Find(emailText)
 		link = link[0]
 		print(link)
